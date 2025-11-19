@@ -3,11 +3,11 @@ import { AutoComplete, Spin } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import './Search.css'
-const baseURL = import.meta.env.VITE_API_URL;
+import api from "../app/Api";
 
 
 function Search() {
-    const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -27,20 +27,21 @@ function Search() {
   }, [searchText]);
 
   const handleSelect = (_, option) => {
-        navigate(`/products/${option.id}`);
-    };
+    navigate(`/products/${option.id}`);
+  };
 
   const fetchResults = async (query) => {
     setLoading(true);
     try {
-      const res = await fetch(`${baseURL}/products/search?q=${query}`);
-      const data = await res.json();
+      // const res = await fetch(`${baseURL}/products/search?q=${query}`);
+      // const data = await res.json();
 
-
-      let formatted = data.products.map((item) => ({
+      const res = await api.get(`/products/search?q=${query}`);
+      console.log(res)
+      const formatted = res.data.products.map((item) => ({
         value: item.title,
         id: item.id,
-        obj:item
+        obj: item,
       }));
 
       setOptions(formatted);
@@ -56,21 +57,21 @@ function Search() {
     }
   };
 
-    return (
-        <div className="search-bar">
-            <AutoComplete
-            className="autoComplete"
-            options={
-                loading ? [{ label: <Spin size="small" />, value: "" }] : options
-            }
-            onSearch={(value) => setSearchText(value)}
-            onSelect={handleSelect}
-            placeholder="Search product..."
-            allowClear={{ clearIcon: <CloseOutlined /> }}
-            onKeyDown={handleKeyDown}
-        />
-        </div>
-    );
+  return (
+    <div className="search-bar">
+      <AutoComplete
+        className="autoComplete"
+        options={
+          loading ? [{ label: <Spin size="small" />, value: "" }] : options
+        }
+        onSearch={(value) => setSearchText(value)}
+        onSelect={handleSelect}
+        placeholder="Search product..."
+        allowClear={{ clearIcon: <CloseOutlined /> }}
+        onKeyDown={handleKeyDown}
+      />
+    </div>
+  );
 }
 
 export default Search;

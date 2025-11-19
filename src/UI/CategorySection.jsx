@@ -14,6 +14,7 @@ import Man from "../assets/Man.png"
 import Kitchen from '../assets/KitchenAccessories.png'
 import HomeDecor from '../assets/HomeDecor.png'
 import { useNavigate } from "react-router-dom";
+import api from "../app/Api";
 
 
 const ICONS = {
@@ -38,11 +39,13 @@ function CategorySection() {
   const navigate = useNavigate();
 
   useEffect(() => {
-  fetch(`${baseURL}/products/categories`)
-    .then((res) => res.json())
-    .then((data) => {
-      const clean = data.map(cat => {
-       return cat?.slug || cat?.name
+  // fetch(`${baseURL}/products/categories`)
+  //   .then((res) => res.json())
+
+      api.get(`products/categories`)
+    .then((res) => {
+      const clean = res.data.map(cat => {
+       return cat?.slug 
     });
       setCategories(clean);
       setLoading(false);

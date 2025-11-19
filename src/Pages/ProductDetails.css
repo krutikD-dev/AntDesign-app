@@ -10,7 +10,7 @@
     font-size: 2.5rem;
     margin: 0;
 }
-.discount-badge{
+.ant-badge-count{
   color: rgb(255, 11, 3) !important;
   background: rgb(241, 202, 203) !important;
   font-weight: 600 !important;

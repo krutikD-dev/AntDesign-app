@@ -4,30 +4,36 @@ import { Image, Button, Rate, Badge, Spin, Tabs, InputNumber } from "antd";
 import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../app/CartSlice";
+import api from '../app/Api'
 import "./ProductDetails.css";
 const baseURL = import.meta.env.VITE_API_URL;
 
 
 const ProductDetails = () => {
-  const [product, setProduct] = useState('');
+  const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!id) return;
-    setLoading(true);
+  if (!id) return;
 
-    fetch(`${baseURL}/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data);
-        console.log(`Redirected to the ${data?.title} decription page`)
-      })
-      .catch((err) => console.error("Error fetching product:", err))
-      .finally(() => setLoading(false));
-  }, [id]);
+  setLoading(true);
+  
+  
+  api.get(`/products/${id}`)
+  .then((res) => {
+    setProduct(res.data);
+    console.log(res)
+      console.log(`Redirected to the ${res?.data?.title} description page`);
+    })
+    .catch((err) => {
+      console.error("Error fetching product:", err);
+    })
+    .finally(() => setLoading(false));
+}, [id]);
+
 
   
 
