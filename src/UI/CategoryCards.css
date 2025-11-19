@@ -1,0 +1,42 @@
+.card1{
+    width: 350px;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+.img-res{
+    width: 100%;
+    height: 100%;
+}
+.category-name{
+    position: absolute;
+    bottom: 18%;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+}
+.category-container{
+    display: flex;
+    gap: 25px;
+    justify-content: space-around;
+}
+@media (max-width: 992px) {
+    .card1{
+        width: auto;
+        height: auto;
+    }
+    .category-name{
+        bottom: 10px;
+        left: 20px;
+    }
+}
+@media (max-width: 576px) {
+    .category-name{
+        display: none;
+    }
+    .category-container{
+        gap: 10px;
+    }
+}
+

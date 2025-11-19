@@ -1,0 +1,17 @@
+.search-bar{
+    width: 100%;
+}
+.autoComplete{
+    width: 400px;
+    font-size: 22px;
+    height:37px;
+}
+.ant-select-selection-search input{
+    background: #dadada;
+
+}
+@media (max-width: 576px) {
+    .autoComplete{
+        width: 216px;
+    }
+}
