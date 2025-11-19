@@ -10,6 +10,7 @@ const CartPage = () => {
   const [discountApplied, setDiscountApplied] = useState(false);
   const [triedApplying, setTriedApplying] = useState(false);
 
+  
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const navigate = useNavigate()
@@ -19,7 +20,7 @@ const CartPage = () => {
     dispatch(updateQuantity({ id, quantity: value, title: title }));
   };
 
-  const handleRemove = (id, title) => {
+  const handleRemove = (id, title) => { 
     dispatch(removeFromCart({ id, title }));
   };
 
@@ -40,10 +41,7 @@ const CartPage = () => {
   }
 
 
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity,0);
   const shipping = 5;
   const discount = discountApplied ? subtotal * 0.1 : 0;
   const total = subtotal + shipping - discount;
@@ -187,13 +185,13 @@ const CartPage = () => {
           </div>
 
           <div className="review-body">
-            <p className="bold">Alex Johnson</p>
+            <p className="bold">Digvijay Patil</p>
 
-            <p>123 Maple Street</p>
-            <p>Springfield, IL, 62704</p>
-            <p>United States</p>
+            <p>Bahiratwadi</p>
+            <p>SB road, Pune, 411016</p>
+            <p>India</p>
 
-            <p className="shipping-type">Standard Shipping (Est. 3–5 days)</p>
+            <p className="shipping-type">Standard Shipping (Est. 3-5 days)</p>
           </div>
         </div>
 
@@ -205,9 +203,9 @@ const CartPage = () => {
           </div>
 
           <div className="review-body">
-            <p className="bold">Visa ending in 1234</p>
+            <p className="bold">Visa ending in 42432</p>
 
-            <p>Cardholder: Alex Johnson</p>
+            <p>Cardholder: Digvijay Patil</p>
             <p>Billing address same as shipping</p>
           </div>
         </div>
