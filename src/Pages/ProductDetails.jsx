@@ -71,8 +71,8 @@ const ProductDetails = () => {
           key={i}
           src={img}
           alt="thumbnail"
-          className="thumbnail-img"   // your CSS applied here
-          preview={true}              // enables preview
+          className="thumbnail"
+          preview={true}              
         />
       ))}
     </div>

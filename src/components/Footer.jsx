@@ -1,6 +1,8 @@
 import React from 'react'
 import './Footer.css'
 import {Input, Button} from 'antd'
+import logo from "../../public/logo2.svg";
+
 
 function Footer() {
   return (
@@ -8,7 +10,7 @@ function Footer() {
     <div className="footer">
         <div className="col">
             <div className="row">
-                <img src="../../public/logo2.svg" alt="" />
+                <img src={logo} alt="" />
                 <span className='brandName'>ShopSwift</span>
             </div>
             <div className="brandLine">
