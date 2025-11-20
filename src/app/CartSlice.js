@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { ShowToaster } from "../UI/ShowToaster";
 import Item from "antd/es/list/Item";
 
-
 const initialState = {
   items: [],
 };
@@ -19,11 +18,11 @@ const cartSlice = createSlice({
       );  
       if (existingItem) {
         existingItem.quantity += 1;
-        ShowToaster('Item Quanity have been Updated!!', 'success')
+        ShowToaster(`${import.meta.env.VITE_QUANTITY_UPDATE}`, 'success')
         console.log(`Quantity Updated of Item(${action.payload.title})`)
       } else {
         state.items.push({ ...action.payload, quantity: action.payload.quantity || 1 });
-        ShowToaster('Item Successfully Added!!', 'success')
+        ShowToaster(`${import.meta.env.VITE_SUCCESS_MSG}`, 'success')
         console.log(`${action.payload.title} is Added to the Cart`)
       }
     },
@@ -38,7 +37,7 @@ const cartSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id);
-      ShowToaster('Item Removed Successfully!!', 'success')
+      ShowToaster(`${import.meta.env.VITE_REMOVED_MSG}`, 'success')
               console.log(`${action.payload.title} is removed from the Cart!!`)
 
     },

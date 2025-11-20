@@ -4,7 +4,7 @@ import {toast,Bounce} from 'react-toastify'
 export function ShowToaster(message, type) {
   const toastOptions = {
     position: "bottom-right",
-    autoClose: 3000,
+    autoClose: 2500,
     hideProgressBar: false,
     closeOnClick: false,
     pauseOnHover: true,
