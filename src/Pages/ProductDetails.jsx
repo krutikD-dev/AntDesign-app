@@ -71,7 +71,7 @@ const ProductDetails = () => {
           key={i}
           src={img}
           alt="thumbnail"
-          className="thumbnail"
+          className="thumbnail-img"
           preview={true}              
         />
       ))}
