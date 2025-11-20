@@ -24,7 +24,7 @@ function Home() {
       const products = res.data.products;
       setProducts(products);
       localStorage.setItem("products", JSON.stringify(products));
-      console.log("fetched");
+      // console.log("fetched");
     })
     .catch((err) => {
       console.error("Error fetching products:", err);

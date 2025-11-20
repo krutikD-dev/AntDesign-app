@@ -37,7 +37,7 @@ function Search() {
       // const data = await res.json();
 
       const res = await api.get(`/products/search?q=${query}`);
-      console.log(res)
+      // console.log(res)
       const formatted = res.data.products.map((item) => ({
         value: item.title,
         id: item.id,

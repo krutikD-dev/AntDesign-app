@@ -24,7 +24,7 @@ function ItemPage() {
       .then((data) => {
         setProducts(data.products || []);
         setLoading(false);
-        console.log(`Redirected to the ${categoryName} page`)
+        // console.log(`Redirected to the ${categoryName} page`)
       })
       .catch((err) => {
         console.error("Error fetching category data:", err);

@@ -25,8 +25,7 @@ const ProductDetails = () => {
   api.get(`/products/${id}`)
   .then((res) => {
     setProduct(res.data);
-    console.log(res)
-      console.log(`Redirected to the ${res?.data?.title} description page`);
+      // console.log(`Redirected to the ${res?.data?.title} description page`);
     })
     .catch((err) => {
       console.error("Error fetching product:", err);
