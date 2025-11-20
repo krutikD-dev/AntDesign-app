@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, redirect } from "react-router-dom";
-import { Row, Col, Card, Button, Spin, Typography } from "antd";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Spin, Typography } from "antd";
+// import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../app/CartSlice";
+// import { addToCart } from "../app/CartSlice";
 import "./ItemPage.css";
+import Card from "../UI/Cards";
 const baseURL = import.meta.env.VITE_API_URL;
 
 
@@ -32,10 +33,10 @@ function ItemPage() {
       });
   }, [categoryName]);
 
-  const handleAddToCart = (item, e) => {
-    e.stopPropagation();
-    dispatch(addToCart(item));
-  };
+  // const handleAddToCart = (item, e) => {
+  //   e.stopPropagation();
+  //   dispatch(addToCart(item));
+  // };
 
   if (loading)
     return (
@@ -45,12 +46,13 @@ function ItemPage() {
     );
 
   return (
+    <>
     <div className="item-page-container">
       <Title level={2} className="item-page-title">
         {categoryName.toUpperCase()}
       </Title>
 
-      <Row gutter={[24, 24]}>
+      {/* <Row gutter={[24, 24]}>
         {products.map((item) => (
           <Col key={item.id} xs={24} sm={12} md={8} lg={6} xl={6}>
             <Card
@@ -80,8 +82,10 @@ function ItemPage() {
             </Card>
           </Col>
         ))}
-      </Row>
+      </Row> */}
+      <Card products={products} />
     </div>
+    </>
   );
 }
 
