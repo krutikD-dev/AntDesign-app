@@ -47,7 +47,7 @@ function Home() {
     .sort(() => Math.random() - 0.5)
     .slice(0, 4);
 
-if (status)
+if (status==='loading')
     return (
       <div className="loading-container">
         <Spin size="large" />

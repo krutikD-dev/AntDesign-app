@@ -5,9 +5,9 @@ const initialState = {
   products: [],
   product: null,
   categories: [],
-  status: null,
-  productStatus: null,
-  categoryStatus: null,
+  status: "idle",
+  productStatus: "idle",
+  categoryStatus: "idle",
   error: null,
 };
 
@@ -49,36 +49,37 @@ const productsSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
+    console.log(builder)
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.status = true;
+        state.status = 'loading';
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = false;
+        state.status = 'Success';
         state.products = action.payload;
       })
       
       .addCase(fetchProductById.pending, (state) => {
-        state.productStatus = true;
+        state.productStatus = 'loading';
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
-        state.productStatus = false;
+        state.productStatus = 'Success';
         state.product = action.payload;
       })
 
       .addCase(fetchProductsByCategory.pending, (state) => {
-        state.status = true;
+        state.status = 'loading';
       })
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-        state.status = false;
+        state.status = 'Success';
         state.products = action.payload;
       })
 
       .addCase(fetchCategories.pending, (state) => {
-        state.categoryStatus = true;
+        state.categoryStatus = 'loading';
       })
        .addCase(fetchCategories.fulfilled, (state, action) => {
-        state.categoryStatus = false;
+        state.categoryStatus = 'Success';
         state.categories = action.payload;
       });
 }});

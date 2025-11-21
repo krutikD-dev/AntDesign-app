@@ -44,7 +44,7 @@ function ItemPage() {
   //   dispatch(addToCart(item));
   // };
 
-  if (status)
+  if (status==='loading')
     return (
       <div className="loading-container">
         <Spin size="large" />

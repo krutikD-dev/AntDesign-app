@@ -20,7 +20,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchProductById(id));
-  }, []);
+  }, [id, dispatch]);
 
 //   useEffect(() => {
 //   if (!id) return;
@@ -46,7 +46,7 @@ const ProductDetails = () => {
     dispatch(addToCart({ ...product, quantity }));
   };
 
-  if (productStatus)  
+  if (productStatus==='loading')  
     return (
       <div className="loader">
         <Spin size="large" />

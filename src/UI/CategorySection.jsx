@@ -63,7 +63,7 @@ function CategorySection() {
 // }, []); 
 
 
-  if (categoryStatus)
+  if (categoryStatus==='loading')
     return (
       <div className="loading-container">
         <Spin size="large" />
