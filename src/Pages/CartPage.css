@@ -352,6 +352,13 @@
   .cart-row{
     padding: 1rem 0;
   }
+  .cart-header{
+        padding: 18px 5px;
+        font-size: 1rem;
+  }
+  .ms-2{
+    margin-left: 5px;
+  }
   .cart-action,.cart-quantity,.cart-price,.cart-product{
     justify-content: center;
   }

@@ -56,7 +56,7 @@ const CartPage = () => {
             <span>Product</span>
             <span>Price</span>
             <span>Quantity</span>
-            <span>Action</span>
+            <span className="ms-2">Action</span>
           </div>
 
           {cartItems.length === 0 ? (
