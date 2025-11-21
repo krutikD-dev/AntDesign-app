@@ -2,36 +2,42 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Image, Button, Rate, Badge, Spin, Tabs, InputNumber } from "antd";
 import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../app/CartSlice";
+import {fetchProductById} from '../app/ProductSlice'
 import api from '../app/Api'
 import "./ProductDetails.css";
 const baseURL = import.meta.env.VITE_API_URL;
 
 
 const ProductDetails = () => {
-  const [product, setProduct] = useState([]);
+  // const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { product, productStatus } = useSelector((state) => state.products);
 
   useEffect(() => {
-  if (!id) return;
+    dispatch(fetchProductById(id));
+  }, []);
 
-  setLoading(true);
+//   useEffect(() => {
+//   if (!id) return;
+
+//   setLoading(true);
   
   
-  api.get(`/products/${id}`)
-  .then((res) => {
-    setProduct(res.data);
-      // console.log(`Redirected to the ${res?.data?.title} description page`);
-    })
-    .catch((err) => {
-      console.error("Error fetching product:", err);
-    })
-    .finally(() => setLoading(false));
-}, [id]);
+//   api.get(`/products/${id}`)
+//   .then((res) => {
+//     setProduct(res.data);
+//       // console.log(`Redirected to the ${res?.data?.title} description page`);
+//     })
+//     .catch((err) => {
+//       console.error("Error fetching product:", err);
+//     })
+//     .finally(() => setLoading(false));
+// }, [id]);
 
 
   
@@ -40,7 +46,7 @@ const ProductDetails = () => {
     dispatch(addToCart({ ...product, quantity }));
   };
 
-  if (loading)
+  if (productStatus)  
     return (
       <div className="loader">
         <Spin size="large" />

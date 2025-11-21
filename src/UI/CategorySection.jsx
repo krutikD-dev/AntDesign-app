@@ -13,8 +13,10 @@ import Shoes from "../assets/Shoes.png";
 import Man from "../assets/Man.png"
 import Kitchen from '../assets/KitchenAccessories.png'
 import HomeDecor from '../assets/HomeDecor.png'
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import api from "../app/Api";
+import { useDispatch,useSelector  } from "react-redux";
+import {fetchCategories} from '../app/ProductSlice'
 
 
 const ICONS = {
@@ -34,27 +36,34 @@ const ICONS = {
 function CategorySection() {
   const baseURL = import.meta.env.VITE_API_URL;
 
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [categories, setCategories] = useState([]);
+  // const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { categories, categoryStatus } = useSelector((s) => s.products);
 
   useEffect(() => {
-  // fetch(`${baseURL}/products/categories`)
-  //   .then((res) => res.json())
-
-      api.get(`products/categories`)
-    .then((res) => {
-      const clean = res.data.map(cat => {
-       return cat?.slug 
-    });
-      setCategories(clean);
-      setLoading(false);
-    })
-    .catch((err) => console.error(err));
-}, []); 
+     dispatch(fetchCategories());
+  }, []);
 
 
-  if (loading)
+//   useEffect(() => {
+//   // fetch(`${baseURL}/products/categories`)
+//   //   .then((res) => res.json())
+
+//       api.get(`products/categories`)
+//     .then((res) => {
+//       const clean = res.data.map(cat => {
+//        return cat?.slug 
+//     });
+//       setCategories(clean);
+//       setLoading(false);
+//     })
+//     .catch((err) => console.error(err));
+// }, []); 
+
+
+  if (categoryStatus)
     return (
       <div className="loading-container">
         <Spin size="large" />
