@@ -102,7 +102,7 @@
 @media (max-width: 576px) {
   .Navbar {
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     height: auto;
     padding: 0.1rem 1rem ;
   }
