@@ -19,7 +19,7 @@ const CheckoutPage = () => {
 
   const getEstimatedDelivery = () => {
   const date = new Date();
-  date.setDate(date.getDate() + 2); // add 2 days
+  date.setDate(date.getDate() + 2);
   return date.toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "short",

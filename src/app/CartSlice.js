@@ -17,7 +17,7 @@ const cartSlice = createSlice({
         (item) => item.id === action.payload.id
       );  
       if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity += action.payload.quantity || 1;
         ShowToaster(`${import.meta.env.VITE_QUANTITY_UPDATE}`, 'success')
         // console.log(`Quantity Updated of Item(${action.payload.title})`)
       } else {

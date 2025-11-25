@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './Pages/Home';
 import ProductDetails from './Pages/ProductDetails';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ItemPage from './Pages/ItemPage';
 import CartPage from './Pages/CartPage';
 import { Provider } from "react-redux";
